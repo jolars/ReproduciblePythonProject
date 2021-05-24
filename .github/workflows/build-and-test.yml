@@ -1,5 +1,5 @@
 # .github/workflows/app.yaml
-name: My Python Project
+name: Build and Test
 on: push
 
 jobs:
@@ -16,6 +16,11 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: "3.9"
+
+      - name: Install eigen
+        run: |
+          sudo apt-get install libeigen3-dev
+          ln -s /usr/include/eigen3/Eigen /usr/include/Eigen
 
       - name: Install pipenv
         run: |
