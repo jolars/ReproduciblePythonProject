@@ -1,0 +1,154 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode,pdfusetitle}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+
+\documentclass[english,a4paper]{article}
+
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath,amsthm,mathtools,isomath}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp} % provide euro and other symbols
+\usepackage{babel}
+
+\usepackage{upquote} %straight quotes in verbatim environments
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage{bookmark}
+\usepackage{csquotes}
+
+\usepackage{listings}
+
+\lstset{% general command to set parameter(s)
+    basicstyle=\ttfamily, % print whole listing small
+    %keywordstyle=\color{black}\bfseries\underbar, % underlined bold black keywords
+    %commentstyle=\color{grey}, % white comments
+    keepspaces = true % no special string spaces
+}
+
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks = true,
+  linkcolor  = SteelBlue4,
+  filecolor  = DarkSlateBlue,
+  citecolor  = Orange3,
+  urlcolor   = DarkSlateBlue
+}
+
+\usepackage{longtable,booktabs}
+
+\usepackage{etoolbox}
+
+% nice tables out of csv files
+\usepackage{csvsimple}
+
+% format units nicely
+\usepackage{siunitx}
+
+% Allow footnotes in longtable head/foot
+\usepackage{footnotehyper}
+\makesavenoteenv{longtable}
+
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+% % tikz and pgfplots
+% \usepackage{pgfplots}
+% \pgfplotsset{width=7cm,compat=1.16}
+% \usepgfplotslibrary{external}
+% \tikzexternalize
+
+% set default figure placement
+\makeatletter
+\def\fps@figure{hbtp}
+\makeatother
+
+\usepackage{pdfpages}
+\usepackage{algorithm,algpseudocode}
+
+\usepackage{dirtytalk} % write quotations using \say{}
+
+% bibliography
+\makeatletter
+\def\blx@nowarnpolyglossia{}
+\makeatother
+\usepackage[style=alphabetic,backend=biber,sorting=anyt]{biblatex}
+\addbibresource{paper.bib}
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+% operators
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\E}{\text{E}}
+\DeclareMathOperator{\var}{var}
+\DeclareMathOperator{\cov}{cov}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\range}{range}
+\DeclareMathOperator{\nullspace}{null}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\card}{card}
+\DeclareMathOperator{\sign}{sign}
+\renewcommand{\vec}{\vectorsym}
+\newcommand{\mat}{\matrixsym}
+\newcommand{\du}{\mathrm{d}}
+
+% title block
+\title{Title}
+
+\usepackage[]{authblk}
+\renewcommand\Affilfont{\itshape\small}
+
+\author{Johan Larsson}
+\affil{The Department of Statistics, Lund University}
+
+%\author[1,*]{Johan Larsson}
+%\affil[1]{The Department of Statistics, Lund University}
+%\affil[*]{Corresponding author:
+%%\href{mailto:johan.larsson@stat.lu.se}{\nolinkurl{johan.larsson@stat.lu.se}}}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\end{abstract}
+
+\hypertarget{introduction}{%
+  \section{Introduction}\label{introduction}}
+
+Here is a reference~\autocite{larsson2020c}. Next is an example of using
+csvsimple~(\autoref{tab:table1}).
+
+\begin{table}[hbtp]
+  \caption{A caption.\label{tab:table1}}
+  \csvreader[
+    tabular={lSS[table-format=3.4]},
+    before reading=\footnotesize\centering\sisetup{round-mode=figures, round-precision=3},
+    table head=\toprule measure & {\(b\)} & {\(\hat b\)} \\\midrule,
+    table foot=\bottomrule
+  ]%
+  {tables/table.csv}%
+  {1=\measure,b=\b, bhat=\bhat}%
+  {\measure & \b & \bhat}
+\end{table}
+
+And here comes a figure~(\autoref{fig:figure1}).
+
+\begin{figure}[hbtp]
+  \centering
+  \includegraphics{figures/plot.pdf}
+  \caption{A figure caption.\label{fig:figure1}}
+\end{figure}
+
+\printbibliography
+
+\end{document}

@@ -18,20 +18,21 @@ __version__ = "0.0.1"
 #   reproducible builds (https://github.com/pybind/python_example/pull/53)
 
 ext_modules = [
-    Pybind11Extension("python_example",
+    Pybind11Extension(
+        "example_module",
         ["src/main.cpp"],
         # Example: passing in the version to the compiled code
-        define_macros = [('VERSION_INFO', __version__)],
-        ),
+        define_macros=[('VERSION_INFO', __version__)],
+    ),
 ]
 
 setup(
-    name="python_example",
+    name="example_module",
     version=__version__,
-    author="Sylvain Corlay",
-    author_email="sylvain.corlay@gmail.com",
-    url="https://github.com/pybind/python_example",
-    description="A test project using pybind11",
+    author="Johan Larsson",
+    author_email="johan.larsson@stat.lu.se",
+    url="https://github.com/jolars/ReproduciblePythonProject/example_module",
+    description="A template for a project using python, Singularity, and C++.",
     long_description="",
     ext_modules=ext_modules,
     extras_require={"test": "pytest"},

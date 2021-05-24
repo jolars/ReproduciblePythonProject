@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+setuptools = ">=42"
+pybind11 = ">=2.6.0"
+pandas = "*"
+numpy = "*"
+wheel = "*"
+example-module = {path = "./example_module"}
+matplotlib = "*"
+
+[dev-packages]
+pytest = "*"
+flake8 = "*"
+pylint = "*"
+yapf = "*"
+ipykernel = "*"
+
+[requires]
+python_version = "3.9"
