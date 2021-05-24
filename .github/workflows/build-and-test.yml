@@ -20,7 +20,7 @@ jobs:
       - name: Install eigen
         run: |
           sudo apt-get install libeigen3-dev
-          ln -s /usr/include/eigen3/Eigen /usr/include/Eigen
+          sudo ln -s /usr/include/eigen3/Eigen /usr/include/Eigen
 
       - name: Install pipenv
         run: |
